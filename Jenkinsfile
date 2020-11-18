@@ -35,7 +35,7 @@ docker push registry.me:5000/mysiteweb:latest'''
       steps {
         sh '''# Del previous container
 docker stop mywebsite
-docker container prune
+docker container prune -f
 # Run docker website
 docker run --name mywebsite -d -p 80:80 registry.me:5000/mysiteweb:latest'''
       }
