@@ -31,5 +31,12 @@ docker push 192.168.92.128:5000/mysiteweb:latest'''
       }
     }
 
+    stage('Launch Web Site') {
+      steps {
+        sh '''# Run docker website
+docker run --name mywebsite -d -p 80:80 192.168.92.128:5000/mysiteweb:latest'''
+      }
+    }
+
   }
 }
