@@ -23,7 +23,7 @@ cat index.html'''
 docker build -t mysiteweb:latest .
 
 # Del of old image
-#docker rmi 192.168.92.128:5000/mysiteweb:latest
+docker rmi 192.168.92.128:5000/mysiteweb:latest
 
 # Upload to the local registry
 docker tag mysiteweb:latest 192.168.92.128:5000/mysiteweb:latest 
