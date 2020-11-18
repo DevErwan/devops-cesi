@@ -1,7 +1,7 @@
 pipeline {
   agent any
   stages {
-    stage('') {
+    stage('Docker file') {
       steps {
         sh '''# Creation du Dockerfile
 touch Dockerfile
@@ -14,6 +14,20 @@ cat Dockerfile
 echo ""
 echo "Check index.html"
 cat index.html'''
+      }
+    }
+
+    stage('Docker image') {
+      steps {
+        sh '''# Build Docker Image 
+docker build -t mysiteweb:latest .
+
+# Del of old image
+#docker rmi 192.168.92.128:5000/mysiteweb:latest
+
+# Upload to the local registry
+docker tag mysiteweb:latest 192.168.92.128:5000/mysiteweb:latest 
+docker push 192.168.92.128:5000/mysiteweb:latest'''
       }
     }
 
